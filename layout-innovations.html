@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Layout Innovations</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: white;
+}
+
+/* HEADER */
+h1 {
+    text-align: center;
+    font-size: 3.2rem;
+    margin-top: 80px;
+    font-weight: 600;
+}
+
+/* INTRO TEXT */
+.intro-text {
+    text-align: center;
+    max-width: 700px;
+    margin: 10px auto 30px auto;
+
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.6s ease;
+}
+
+.intro-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* BUTTON */
+.button {
+    display: block;
+    width: fit-content;
+    margin: 20px auto 40px auto;
+    padding: 12px 28px;
+    border: 2px solid #111;
+    border-radius: 50px;
+    background: transparent;
+    cursor: pointer;
+    color: #111;
+    text-decoration: none;
+    transition: 0.3s ease;
+    white-space: nowrap;
+}
+
+.button:hover {
+    background: #111;
+    color: white;
+}
+
+/* WRAPPER */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    width: 90%;
+    margin: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.8s ease;
+}
+
+.wrapper.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* LEFT SIDE */
+.left {
+    width: 50%;
+    position: relative;
+    height: 600px;
+}
+
+/* RIGHT PANEL */
+.right {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    opacity: 0;
+    transform: translateX(30px);
+    transition: 0.6s ease;
+
+    pointer-events: none;
+}
+
+.right.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+/* INFO BOX */
+.info-box {
+    border: 2px solid #111;
+    border-radius: 16px;
+    padding: 20px;
+    min-height: 180px;
+}
+
+/* FADE ANIMATION */
+.fade-out {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: 0.2s ease;
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 0.3s ease;
+}
+
+/* IMAGE BOX */
+.image-box {
+    border: 2px solid #111;
+    border-radius: 16px;
+    padding: 15px;
+    min-height: 160px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+    direction: rtl;
+    align-items: stretch;
+}
+
+/* IMAGE */
+.image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+
+    border: 1px solid #111;
+    border-radius: 10px;
+
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.image.enlarged {
+    transform: scale(2);
+    z-index: 50;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* LEFT BOXES */
+.box {
+    position: absolute;
+    width: 100%;
+    height: 90px;
+    border: 2px solid #111;
+    border-radius: 14px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.box1 { top: 0; }
+.box2 { top: 110px; }
+.box3 { top: 220px; }
+
+.box.active {
+    background: #111;
+    color: white;
+    transform: translateX(-10px);
+}
+
+/* CENTER TITLE */
+.box-header {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border: 2px solid #111;
+    padding: 12px 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #111;
+    background: white;
+}
+
+.back-btn:hover {
+    background: #111;
+    color: white;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Layout Innovations</h1>
+
+<p class="intro-text" id="introText">
+    This interactive exhibition explores how modern digital culture shapes layout design through structure, speed, and futuristic aesthetics.
+</p>
+
+<a href="#" class="button" id="btn">Press Me</a>
+
+<div class="wrapper" id="wrapper">
+
+    <div class="left">
+
+        <div class="box box1"
+        data-title="Digital Structure Culture"
+        data-content="Digital Structure Culture represents how modern platforms organize massive amounts of content into clean, navigable systems. Apps like Netflix, Spotify, and news dashboards rely on structured grids and recommendation systems to improve clarity and user control."
+        data-images="images/digital_1.jpg,images/digital_2.jpg,images/digital_3.jpg">
+            <div class="box-header">Digital Structure Culture</div>
+        </div>
+
+        <div class="box box2"
+        data-title="Fast Scrolling Culture"
+        data-content="Fast Scrolling Culture is shaped by TikTok, Instagram, and X, where content is consumed in rapid vertical motion, encouraging instant engagement and quick discovery."
+        data-images="images/scrolling_1.jpg,images/scrolling_2.jpg,images/scrolling_3.jpg">
+            <div class="box-header">Fast Scrolling Culture</div>
+        </div>
+
+        <div class="box box3"
+        data-title="Futuristic Visual Culture"
+        data-content="Futuristic Visual Culture draws from cyberpunk aesthetics, combining neon lighting, digital interfaces, and dystopian environments."
+        data-images="images/cyberpunk_1.jpg,images/cyberpunk_2.jpg,images/cyberpunk_3.jpg">
+            <div class="box-header">Futuristic Visual Culture</div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right" id="rightPanel">
+
+        <div class="info-box">
+            <h2 id="title" class="fade-in">Select a Box</h2>
+            <p id="content" class="fade-in">Click a box on the left to view examples.</p>
+        </div>
+
+        <div class="image-box" id="imageBox"></div>
+
+    </div>
+
+</div>
+
+<a href="index.html" class="back-btn">Go Back</a>
+
+<script>
+const btn = document.getElementById("btn");
+const wrapper = document.getElementById("wrapper");
+const rightPanel = document.getElementById("rightPanel");
+const introText = document.getElementById("introText");
+
+const boxes = document.querySelectorAll(".box");
+const title = document.getElementById("title");
+const content = document.getElementById("content");
+const imageBox = document.getElementById("imageBox");
+
+/* PRESS ME */
+btn.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    wrapper.classList.add("active");
+
+    btn.style.opacity = "0";
+    btn.style.pointerEvents = "none";
+
+    introText.classList.add("show");
+});
+
+/* BOX CLICK WITH FADE */
+boxes.forEach(box => {
+    box.addEventListener("click", () => {
+
+        boxes.forEach(b => b.classList.remove("active"));
+        box.classList.add("active");
+
+        const newTitle = box.dataset.title;
+        const newContent = box.dataset.content;
+
+        /* FADE OUT */
+        title.classList.add("fade-out");
+        content.classList.add("fade-out");
+
+        setTimeout(() => {
+
+            /* UPDATE TEXT */
+            title.textContent = newTitle;
+            content.textContent = newContent;
+
+            /* RESET FADE */
+            title.classList.remove("fade-out");
+            content.classList.remove("fade-out");
+
+            title.classList.add("fade-in");
+            content.classList.add("fade-in");
+
+        }, 200);
+
+        /* IMAGES */
+        const imgs = box.dataset.images.split(",");
+        imageBox.innerHTML = "";
+
+        imgs.slice(0, 3).forEach(src => {
+            const img = document.createElement("img");
+            img.className = "image";
+            img.src = src.trim();
+            imageBox.appendChild(img);
+        });
+
+        rightPanel.classList.add("active");
+    });
+});
+
+/* IMAGE ENLARGE */
+imageBox.addEventListener("click", (e) => {
+    const target = e.target;
+
+    if (target.classList.contains("image")) {
+
+        document.querySelectorAll(".image").forEach(img => {
+            if (img !== target) img.classList.remove("enlarged");
+        });
+
+        target.classList.toggle("enlarged");
+    }
+});
+</script>
+
+</body>
+</html>

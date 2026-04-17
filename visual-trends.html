@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visual Trends</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: black;
+  overflow: hidden;
+}
+
+.stage {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  text-align: center;
+  transition: transform 0.8s ease;
+}
+
+.wrapper.active {
+  transform: translateY(-80px);
+}
+
+h1 {
+  font-size: 120px;
+  letter-spacing: -5px;
+  font-family: Impact, "Arial Black", sans-serif;
+  margin: 0;
+  cursor: pointer;
+}
+
+h1 span {
+  display: inline-block;
+  animation: wave 2.5s ease-in-out infinite, glow 2s infinite alternate;
+  color: #00f7ff;
+  text-shadow: 0 0 10px #00f7ff, 0 0 25px #ff00ff;
+}
+
+@keyframes wave {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(15px) translateY(-10px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+.box-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  opacity: 0;
+  transform: translateY(25px);
+  pointer-events: none;
+  transition: all 0.6s ease;
+}
+
+.wrapper.active .box-container {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.box {
+  width: 520px;
+  height: 95px;
+  margin: 0 auto;
+
+  border-radius: 14px;
+  border: 2px solid #ff00ff;
+  box-shadow: 0 0 20px #00f7ff;
+
+  background: #111;
+  cursor: pointer;
+
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.5s ease;
+}
+
+.box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+}
+
+.box.expanded::before {
+  opacity: 1;
+}
+
+.box.y2k.expanded::before {
+  background-image: url('images/y2k.jpg');
+}
+
+.box.popart.expanded::before {
+  background-image: url('images/popart.jpg');
+}
+
+.box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.box-label {
+  position: relative;
+  z-index: 2;
+  font-size: 22px;
+  font-weight: 900;
+  font-family: "Arial Black", sans-serif;
+  color: white;
+}
+
+.box.expanded {
+  width: 720px;
+  height: 300px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.box.expanded .box-label {
+  display: none;
+}
+
+.card-content {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  z-index: 2;
+  color: white;
+}
+
+.box.expanded .card-content {
+  display: flex;
+}
+
+/* Y2K TITLE */
+.box.y2k .card-title {
+  font-size: 34px;
+  font-weight: 900;
+  font-family: "Arial Black", sans-serif;
+  text-align: center;
+  width: 100%;
+
+  background: linear-gradient(
+    90deg,
+    #00f7ff,
+    #ff00ff,
+    #8a2be2,
+    #00f7ff
+  );
+  background-size: 300%;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  -webkit-text-stroke: 1px black;
+
+  text-shadow:
+    1px 1px 0 black,
+    -1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black,
+    0 0 8px #00f7ff,
+    0 0 15px #ff00ff;
+
+  animation: neonFlow 4s linear infinite, y2kFlicker 2.5s infinite alternate;
+}
+
+/* POP ART TITLE */
+.box.popart .card-title {
+  font-size: 42px;
+  font-weight: 900;
+  font-family: Impact, "Arial Black", sans-serif;
+
+  color: #ffe600;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  -webkit-text-stroke: 2px black;
+
+  text-shadow:
+    3px 3px 0 red,
+    6px 6px 0 black;
+
+  animation: popBounce 0.6s ease;
+}
+
+/* DETAIL TEXT */
+.card-details {
+  margin-top: 15px;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  color: #ddd;
+  line-height: 1.6;
+  text-align: center;
+
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+
+  letter-spacing: 0.5px;
+}
+
+/* ANIMATIONS */
+@keyframes neonFlow {
+  0% { background-position: 0% }
+  100% { background-position: 300% }
+}
+
+@keyframes y2kFlicker {
+  0% {
+    transform: translateX(0px);
+    filter: drop-shadow(0 0 5px #00f7ff);
+  }
+  50% {
+    transform: translateX(1px);
+    filter: drop-shadow(0 0 15px #ff00ff);
+  }
+  100% {
+    transform: translateX(-1px);
+    filter: drop-shadow(0 0 10px #00f7ff);
+  }
+}
+
+@keyframes popBounce {
+  0% { transform: scale(0.8); }
+  60% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* GO BACK BUTTON */
+.go-back {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  padding: 10px 16px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+
+  border: 2px solid #00f7ff;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  box-shadow: 0 0 10px #00f7ff;
+
+  transition: 0.3s ease;
+}
+
+.go-back:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ff00ff;
+  border-color: #ff00ff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="stage">
+
+<div class="wrapper" id="wrapper">
+
+  <h1 id="title">
+    <span>V</span><span>I</span><span>S</span><span>U</span><span>A</span><span>L</span>
+    <span style="width:20px; display:inline-block;"></span>
+    <span>T</span><span>R</span><span>E</span><span>N</span><span>D</span><span>S</span>
+  </h1>
+
+  <div class="box-container">
+
+    <div class="box y2k" onclick="toggleBox(this)">
+      <span class="box-label">Y2K Aesthetic</span>
+
+      <div class="card-content">
+        <div class="card-title">Y2K Aesthetic</div>
+        <div class="card-details">
+          A nostalgic, techno-optimistic style blending futuristic tech vibes with 2000s pop culture. Defined by shiny metallics, glossy white and icy blue tones, and “blobby” 3D graphics, it reflects the excitement of the early internet era.
+        </div>
+      </div>
+    </div>
+
+    <div class="box popart" onclick="toggleBox(this)">
+      <span class="box-label">Pop Art</span>
+
+      <div class="card-content">
+        <div class="card-title">Pop Art</div>
+        <div class="card-details">
+          A mid-1950s–1960s art movement originating in Britain and America that challenged fine art traditions by incorporating mass-culture imagery, such as advertisements, comic books, and consumer products. Defined by bold colors, irony, and mechanical techniques like screen printing, it transformed mundane objects into high art.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<!-- GO BACK BUTTON -->
+<div class="go-back" onclick="goBack()">
+  Go Back
+</div>
+
+<script>
+document.getElementById("title").addEventListener("click", function () {
+  document.getElementById("wrapper").classList.add("active");
+});
+
+function toggleBox(el) {
+  document.querySelectorAll(".box").forEach(box => {
+    if (box !== el) box.classList.remove("expanded");
+  });
+  el.classList.toggle("expanded");
+}
+
+function goBack() {
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

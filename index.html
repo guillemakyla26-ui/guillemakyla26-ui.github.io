@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  text-align: center;
+  margin-top: 80px;
+  font-family: "Comic Sans MS", "Arial Rounded MT Bold", cursive;
+  color: white;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.1);
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35);
+  z-index: -1;
+}
+
+h1 {
+  font-size: 150px;
+  font-weight: 900;
+  font-family: Impact, "Arial Black", sans-serif;
+  margin: 0 0 30px 0;
+  letter-spacing: -6px;
+  color: #00f7ff;
+  filter: drop-shadow(0 15px 20px rgba(0,0,0,0.8));
+}
+
+h1 span {
+  display: inline-block;
+  animation: waveX 2.8s ease-in-out infinite, glow 2s infinite alternate;
+  text-shadow:
+    0 0 5px #00f7ff,
+    0 0 10px #00f7ff,
+    0 0 20px #ff00ff,
+    0 0 40px #ff00ff,
+    0 0 80px #00f7ff;
+}
+
+h1 span.space {
+  width: 25px;
+}
+
+h1 span:nth-child(1) { animation-delay: 0s; }
+h1 span:nth-child(2) { animation-delay: 0.05s; }
+h1 span:nth-child(3) { animation-delay: 0.1s; }
+h1 span:nth-child(4) { animation-delay: 0.15s; }
+h1 span:nth-child(5) { animation-delay: 0.2s; }
+h1 span:nth-child(6) { animation-delay: 0.25s; }
+h1 span:nth-child(7) { animation-delay: 0.3s; }
+h1 span:nth-child(8) { animation-delay: 0.35s; }
+h1 span:nth-child(9) { animation-delay: 0.4s; }
+
+@keyframes waveX {
+  0%   { transform: translateX(0) translateY(0); }
+  25%  { transform: translateX(10px) translateY(-10px); }
+  50%  { transform: translateX(20px) translateY(0); }
+  75%  { transform: translateX(10px) translateY(10px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 3px #00f7ff, 0 0 8px #ff00ff;
+  }
+  100% {
+    text-shadow: 0 0 10px #00f7ff, 0 0 25px #ff00ff, 0 0 50px #00f7ff;
+  }
+}
+
+.main-container {
+  max-width: 1100px;
+  margin: 0 auto 60px auto;
+  padding: 40px 20px;
+  border-radius: 20px;
+  border: 2px solid #00f7ff;
+  background: rgba(0,0,0,0.25);
+  box-shadow:
+    0 0 15px #00f7ff,
+    0 0 35px #ff00ff;
+  backdrop-filter: blur(6px);
+}
+
+p {
+  font-size: 22px;
+  max-width: 800px;
+  margin: 20px auto 40px auto;
+  line-height: 1.6;
+  text-align: center;
+  text-shadow: 0 0 10px #00f7ff;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.box {
+  width: 280px;
+  height: 230px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid #00f7ff;
+  box-shadow: 0 0 15px #00f7ff;
+  transition: 0.3s ease;
+}
+
+.box img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.box span {
+  position: relative;
+  z-index: 2;
+  font-size: 18px;
+  font-weight: 900;
+  font-family: Impact, "Arial Black", sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+  padding: 12px;
+}
+
+.box:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px #ff00ff;
+  border-color: #ff00ff;
+}
+
+.reflection-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.reflection-box {
+  width: 280px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  font-weight: 900;
+  font-family: Impact, "Arial Black", sans-serif;
+  text-transform: uppercase;
+  color: white;
+  border-radius: 15px;
+  border: 2px solid #ff00ff;
+  background: rgba(0,0,0,0.4);
+  box-shadow: 0 0 15px #ff00ff;
+  transition: 0.3s ease;
+  text-decoration: none; /* added */
+}
+
+.reflection-box:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px #00f7ff;
+  border-color: #00f7ff;
+}
+
+@media (max-width: 768px) {
+  .container {
+    gap: 25px;
+  }
+
+  .box,
+  .reflection-box {
+    width: 240px;
+    height: 190px;
+  }
+
+  h1 {
+    font-size: 90px;
+    letter-spacing: -3px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1>
+  <span>P</span><span>o</span><span>p</span>
+  <span class="space"></span>
+  <span>C</span><span>u</span><span>l</span><span>t</span><span>u</span><span>r</span><span>e</span>
+</h1>
+
+<div class="main-container">
+
+  <p>
+    Enter a virtual exhibition that explores the influence of pop culture on design, music, fashion, and film through vivid visuals and interactive experiences, showing how cultural trends emerge, evolve, and shape creative expression. Discover a dynamic space filled with bold graphics, iconic styles, music eras, and cinematic moments reimagined through modern design, highlighting how pop culture continues to inspire innovation and connect different creative fields.
+  </p>
+
+  <div class="container">
+
+    <a href="visual-trends.html" class="box">
+      <img src="images/visual.jpg">
+      <span>Visual Trends</span>
+    </a>
+
+    <a href="typography-color.html" class="box">
+      <img src="images/typography.jpg">
+      <span>Typography & Color</span>
+    </a>
+
+    <a href="layout-innovations.html" class="box">
+      <img src="images/layout.jpg">
+      <span>Layout Innovations</span>
+    </a>
+
+  </div>
+
+  <div class="reflection-container">
+    <a href="reflection.html" class="reflection-box">
+      Reflection
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>

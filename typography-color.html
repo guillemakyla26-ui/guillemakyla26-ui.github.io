@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Typography & Color</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Rajdhani', sans-serif;
+    background: url('Tbackground.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 20, 0.7);
+    z-index: -1;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 70px 20px;
+}
+
+header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    color: #00f7ff;
+    text-shadow: 0 0 20px #00f7ff;
+}
+
+header p {
+    font-size: 1.5rem;
+    color: #ddd;
+}
+
+/* SECTION */
+.section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px;
+}
+
+/* CARD */
+.card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0,255,255,0.3);
+    border-radius: 15px;
+    padding: 30px;
+    width: 320px;
+    backdrop-filter: blur(8px);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px #00f7ff;
+}
+
+/* WIDE CYBERPUNK BOX */
+.wide-card {
+    width: 80%;
+    max-width: 1000px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* CYBER TITLE */
+.cyber-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff00ff, 0 0 25px #ff00ff;
+    margin-bottom: 15px;
+}
+
+/* CYBER IMAGES */
+.cyber-images {
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cyber-images img {
+    width: 300px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid #00f7ff;
+    box-shadow: 0 0 15px #00f7ff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.cyber-images img:hover {
+    transform: scale(1.05);
+}
+
+/* LIGHTBOX WITH ANIMATION */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+
+    animation: fadeBg 0.35s forwards;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 30px #ff00ff;
+
+    transform: scale(0.6);
+    opacity: 0;
+
+    animation: zoomIn 0.35s forwards;
+}
+
+/* ANIMATIONS */
+@keyframes fadeBg {
+    from { background: rgba(0,0,0,0); }
+    to { background: rgba(0,0,0,0.9); }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* TEXT STYLES */
+.neon-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #00f7ff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.contrast-text {
+    background: black;
+    color: yellow;
+    padding: 8px 12px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #00f7ff;
+    color: black;
+    padding: 12px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #ff00ff;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Typography & Color</h1>
+    <p>Exploring futuristic fonts and bold color schemes that define modern digital aesthetics</p>
+</header>
+
+<section class="section">
+
+    <div class="card">
+        <h2 class="gradient-text">Color Scheme</h2>
+        <div class="color-box" style="background:#00f7ff;"></div>
+        <div class="color-box" style="background:#ff00ff;"></div>
+        <div class="color-box" style="background:#1a1a2e;"></div>
+        <p>Neon cyan and magenta paired with dark tones create a futuristic, cyberpunk feel.</p>
+    </div>
+
+    <div class="card">
+        <h2 class="gradient-text">Typography</h2>
+        <p class="neon-text">Orbitron Display Font</p>
+        <p>
+            Orbitron is a geometric, futuristic sans-serif display font designed by Matt McInerney.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2 class="gradient-text">Contrast & Styling</h2>
+        <p class="contrast-text">High Contrast Example</p>
+        <p>Using strong contrast improves readability and visual impact.</p>
+    </div>
+
+</section>
+
+<!-- CYBERPUNK BOX -->
+<div class="card wide-card">
+    <h2 class="cyber-title">Cyberpunk</h2>
+
+    <p>
+        The cyberpunk aesthetic is a significant part of pop culture, characterized by futuristic visuals, neon colors, and dystopian themes. It blends high-tech innovation with gritty urban environments.
+    </p>
+</div>
+
+<!-- IMAGES OUTSIDE BOX -->
+<div class="cyber-images">
+    <img src="images/cyber1.jpg" onclick="openImage(this.src)">
+    <img src="images/cyber2.jpg" onclick="openImage(this.src)">
+</div>
+
+<a href="index.html" class="back-btn">Go Back</a>
+
+<script>
+function openImage(src) {
+    const lightbox = document.createElement("div");
+    lightbox.classList.add("lightbox");
+
+    const img = document.createElement("img");
+    img.src = src;
+
+    lightbox.appendChild(img);
+
+    lightbox.onclick = function () {
+        img.style.transform = "scale(0.6)";
+        img.style.opacity = "0";
+        lightbox.style.background = "rgba(0,0,0,0)";
+
+        setTimeout(() => {
+            lightbox.remove();
+        }, 250);
+    };
+
+    document.body.appendChild(lightbox);
+}
+</script>
+
+</body>
+</html>

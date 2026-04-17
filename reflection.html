@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evolution of Design</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    header {
+        text-align: center;
+        padding: 40px 60px;
+        border: 2px solid rgba(255,255,255,0.2);
+        border-radius: 15px;
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        animation: fadeIn 1.2s ease-in-out;
+        max-width: 800px;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        margin: 0;
+        color: #60a5fa;
+    }
+
+    p {
+        margin-top: 20px;
+        font-size: 1.1rem;
+        color: #cbd5e1;
+        line-height: 1.6;
+    }
+
+    /* Go Back Button */
+    .back-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        background: rgba(96, 165, 250, 0.9);
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+        background: #3b82f6;
+        transform: translateY(-3px);
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Evolution of Design</h1>
+    <p>
+        Throughout the ages, design has never been stagnant—it continues to evolve, just like people. 
+        Each of us has our own interests and preferences, and these constantly shifting trends drive design forward. 
+        Our collective tastes shape how design grows and transforms over time. 
+        I believe that design will continue to change in every era, much like pop culture, expanding and adapting according to what captures our interest.
+    </p>
+</header>
+
+<a href="index.html" class="back-btn">Go Back</a>
+
+</body>
+</html>
